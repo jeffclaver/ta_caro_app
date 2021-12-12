@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tacaroapp/modules/login/login_controller.dart';
+import 'package:tacaroapp/modules/login/repositories/login_repository_impl.dart';
+import 'package:tacaroapp/shared/services/app_database.dart';
 import 'package:validators/validators.dart';
 import '/shared/widgets/button/button.dart';
 
@@ -14,14 +16,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final controller = LoginController();
+  late final LoginController controller;
 
   @override
   void initState() {
     super.initState();
+    controller = LoginController(
+        repository: LoginRepositoryImpl(dataBase: AppDataBase.instance));
     controller.addListener(() {
       controller.state.when(
-          success: (value) => Navigator.pushReplacementNamed(context, "/home"),
+          success: (value) => Navigator.pushReplacementNamed(context, "/home",
+              arguments: value),
           error: (message, _) {
             final snackBar = SnackBar(
               content: Text(message),
