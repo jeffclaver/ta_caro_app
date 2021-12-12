@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tacaroapp/modules/login/pages/create_account_controller.dart';
+import 'package:tacaroapp/modules/login/repositories/login_repository_impl.dart';
+import 'package:tacaroapp/shared/services/app_database.dart';
 import 'package:tacaroapp/shared/widgets/button/button.dart';
 import 'package:tacaroapp/shared/widgets/input_text/input_text.dart';
 import 'package:validators/validators.dart';
@@ -13,14 +15,16 @@ class CreateAccountPage extends StatefulWidget {
 }
 
 class _CreateAccountPageState extends State<CreateAccountPage> {
-  final controller = CreateLoginController();
+  late final CreateAccountController controller;
 
   @override
   void initState() {
     super.initState();
+    controller = CreateAccountController(
+        repository: LoginRepositoryImpl(dataBase: AppDataBase.instance));
     controller.addListener(() {
       controller.state.when(
-          success: (value) => Navigator.pushNamed(context, "/login"),
+          success: (value) => Navigator.pop(context),
           error: (message, _) {
             final snackBar = SnackBar(
               content: Text(message),

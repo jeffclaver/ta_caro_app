@@ -7,7 +7,11 @@
         {
             "name": "tacaroapp",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "--dart-define", "SUPABASEURL=https://xmgbggmrlcvfgcavpmcn.supabase.co",
+                    "--dart-define", "SUPABASEKEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzOTMzNjc2NywiZXhwIjoxOTU0OTEyNzY3fQ._hGT1cX80qX89GNFntQ7OPNbtRUZbxKbc5xDMMt5tUo",
+            ]
         },
         {
             "name": "tacaroapp (profile mode)",
