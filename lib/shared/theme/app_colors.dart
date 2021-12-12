@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 
 abstract class IAppColors {
   Color get primary;
+  Color get title;
+  Color get subtitle;
   Color get buttonDisabled;
   Color get textDisabled;
   Color get textEnabled;
@@ -11,6 +13,7 @@ abstract class IAppColors {
   Color get textColor;
   Color get badColor;
   Color get border;
+  Color get backButton;
 }
 
 class AppColors implements IAppColors {
@@ -43,4 +46,13 @@ class AppColors implements IAppColors {
 
   @override
   Color get border => const Color(0xFFE9E9EC);
+
+  @override
+  Color get subtitle => const Color(0xFF949B9C);
+
+  @override
+  Color get title => const Color(0xFF1E1F20);
+
+  @override
+  Color get backButton => const Color(0XFF000000);
 }
