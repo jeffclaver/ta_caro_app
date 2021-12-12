@@ -6,10 +6,12 @@ enum ButtonType { fill, outline, none }
 class Button extends StatelessWidget {
   final String text;
   final ButtonType type;
+  final Function() onPressed;
   const Button({
     Key? key,
     required this.text,
     required this.type,
+    required this.onPressed,
   }) : super(key: key);
 
   BoxDecoration get boxDecoration {
@@ -54,7 +56,7 @@ class Button extends StatelessWidget {
         height: 58,
         decoration: boxDecoration,
       ),
-      onTap: () {},
+      onTap: onPressed,
     );
   }
 }
