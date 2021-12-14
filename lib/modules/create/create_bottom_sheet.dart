@@ -47,6 +47,7 @@ class _CreateBottomSheetState extends State<CreateBottomSheet> {
               InputText(
                 text: "Produto",
                 hintText: "Digite um nome",
+                textInputAction: TextInputAction.next,
                 onChanged: (value) => controller.onChanged(name: value),
                 validator: (value) =>
                     value.isNotEmpty ? null : "Digite o nome do produto",
@@ -55,6 +56,7 @@ class _CreateBottomSheetState extends State<CreateBottomSheet> {
               InputText(
                 text: "Preço",
                 hintText: "Digite o valor",
+                textInputAction: TextInputAction.next,
                 onChanged: (value) => controller.onChanged(price: value),
                 textInputType: TextInputType.number,
                 validator: (value) =>
