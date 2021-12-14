@@ -1,16 +1,16 @@
 # tacaroapp
 
-A new Flutter project.
+# Sobre o projeto
 
-## Getting Started
+Aplicativo feito junto do Flutter Race #1
 
-This project is a starting point for a Flutter application.
+Um aplicativo para versão mobile, com intuito de ajudar as pessoas a terem um melhor controle do preços dos produtos que adquirimos no cotidiano.
 
-A few resources to get you started if this is your first Flutter project:
+Utilizada a versão 2.5.3 do flutter
+Roda em S.O Android / IOS / Windows
+Para você rodar o projeto basta fazer o clone desse repositório e utilizar o VScode ou Android Studio para fazer o build.
+Mais informações : [Install flutter]([ttps://docs.flutter.dev/get-started/install)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+[Figma do projeto](https://www.figma.com/file/M60t8ulOCV7TCEYuLyrlA3/T%C3%A1-caro%3F?node-id=0%3A1)
