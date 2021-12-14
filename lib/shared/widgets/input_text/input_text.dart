@@ -11,6 +11,7 @@ class InputText extends StatelessWidget {
   final String? Function(String)? validator;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? textInputType;
+  final TextInputAction? textInputAction;
   const InputText({
     required this.text,
     required this.hintText,
@@ -20,6 +21,7 @@ class InputText extends StatelessWidget {
     this.obscure = false,
     this.inputFormatters,
     this.textInputType,
+    this.textInputAction,
   }) : super(key: key);
 
   @override
@@ -31,6 +33,7 @@ class InputText extends StatelessWidget {
         SizedBox(height: 12),
         TextFormField(
           inputFormatters: inputFormatters,
+          textInputAction: textInputAction,
           keyboardType: textInputType,
           obscureText: obscure,
           onChanged: onChanged,

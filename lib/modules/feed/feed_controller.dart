@@ -65,7 +65,6 @@ class FeedController extends ChangeNotifier {
     try {
       update(AppState.loading());
       final response = await repository.getAll();
-      print(response);
       update(AppState.success<List<OrderModel>>(response));
     } catch (e) {
       update(AppState.error(e.toString()));

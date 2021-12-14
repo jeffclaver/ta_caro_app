@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:supabase/supabase.dart';
 import 'package:tacaroapp/shared/models/user_model.dart';
 import 'package:tacaroapp/shared/services/app_database.dart';

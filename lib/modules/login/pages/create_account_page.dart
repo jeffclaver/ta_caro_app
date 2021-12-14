@@ -56,53 +56,57 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Form(
             key: controller.formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Criando uma conta", style: AppTheme.textStyle.title),
-                SizedBox(height: 10),
-                Text("Mantenha seus gastos em dia",
-                    style: AppTheme.textStyle.subtitle),
-                SizedBox(height: 38),
-                InputText(
-                  text: "Nome",
-                  hintText: "Digite seu nome completo",
-                  validator: (value) =>
-                      isAlpha(value) ? null : "Digite um nome válido",
-                  onChanged: (value) => controller.onChanged(name: value),
-                ),
-                SizedBox(height: 18),
-                InputText(
-                    text: "Email",
-                    hintText: "Digite seu email",
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Criando uma conta", style: AppTheme.textStyle.title),
+                  SizedBox(height: 10),
+                  Text("Mantenha seus gastos em dia",
+                      style: AppTheme.textStyle.subtitle),
+                  SizedBox(height: 38),
+                  InputText(
+                    text: "Nome",
+                    hintText: "Digite seu nome completo",
+                    textInputAction: TextInputAction.next,
                     validator: (value) =>
-                        isEmail(value) ? null : "Digite um email válido",
-                    onChanged: (value) => controller.onChanged(email: value)),
-                SizedBox(height: 18),
-                InputText(
-                    text: "Senha",
-                    hintText: "Digite sua senha",
-                    obscure: true,
-                    validator: (value) => value.length >= 6
-                        ? null
-                        : "Digite uma senha igual 6 ou mais caracteres",
-                    onChanged: (value) =>
-                        controller.onChanged(password: value)),
-                SizedBox(height: 15),
-                AnimatedBuilder(
-                    animation: controller,
-                    builder: (_, __) => controller.state.when(
-                          loading: () =>
-                              Center(child: CircularProgressIndicator()),
-                          orElse: () => Button(
-                            text: "Criar conta",
-                            type: ButtonType.fill,
-                            onPressed: () {
-                              controller.create();
-                            },
-                          ),
-                        ))
-              ],
+                        isAlpha(value) ? null : "Digite um nome válido",
+                    onChanged: (value) => controller.onChanged(name: value),
+                  ),
+                  SizedBox(height: 18),
+                  InputText(
+                      text: "Email",
+                      hintText: "Digite seu email",
+                      textInputAction: TextInputAction.next,
+                      validator: (value) =>
+                          isEmail(value) ? null : "Digite um email válido",
+                      onChanged: (value) => controller.onChanged(email: value)),
+                  SizedBox(height: 18),
+                  InputText(
+                      text: "Senha",
+                      hintText: "Digite sua senha",
+                      obscure: true,
+                      validator: (value) => value.length >= 6
+                          ? null
+                          : "Digite uma senha igual 6 ou mais caracteres",
+                      onChanged: (value) =>
+                          controller.onChanged(password: value)),
+                  SizedBox(height: 15),
+                  AnimatedBuilder(
+                      animation: controller,
+                      builder: (_, __) => controller.state.when(
+                            loading: () =>
+                                Center(child: CircularProgressIndicator()),
+                            orElse: () => Button(
+                              text: "Criar conta",
+                              type: ButtonType.fill,
+                              onPressed: () {
+                                controller.create();
+                              },
+                            ),
+                          ))
+                ],
+              ),
             ),
           ),
         ),
