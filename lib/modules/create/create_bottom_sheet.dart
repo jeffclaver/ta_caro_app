@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+import 'package:tacaroapp/shared/models/user_model.dart';
 import '/modules/create/create_controller.dart';
 import '/modules/create/repositories/create_repository_impl.dart';
 import '/shared/services/app_database.dart';
@@ -8,7 +9,8 @@ import '/shared/widgets/button/button.dart';
 import '/shared/widgets/input_text/input_text.dart';
 
 class CreateBottomSheet extends StatefulWidget {
-  const CreateBottomSheet({Key? key}) : super(key: key);
+  final UserModel user;
+  const CreateBottomSheet({Key? key, required this.user}) : super(key: key);
 
   @override
   State<CreateBottomSheet> createState() => _CreateBottomSheetState();
@@ -21,6 +23,7 @@ class _CreateBottomSheetState extends State<CreateBottomSheet> {
   void initState() {
     super.initState();
     controller = CreateController(
+        userID: widget.user.id,
         repository: CreateRepositoryImpl(database: AppDataBase.instance));
     controller.addListener(() {
       controller.state

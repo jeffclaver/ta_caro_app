@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tacaroapp/modules/feed/feed_controller.dart';
 import 'package:tacaroapp/modules/feed/repositories/feed_repository_impl.dart';
 import 'package:tacaroapp/shared/models/order_model.dart';
+import 'package:tacaroapp/shared/models/user_model.dart';
 import 'package:tacaroapp/shared/services/app_database.dart';
 import 'package:tacaroapp/shared/widgets/list_tile/app_list_tile.dart';
 import '/shared/theme/app_text.dart';
@@ -9,7 +10,8 @@ import '/shared/widgets/card_chart/card_chart.dart';
 import '/shared/widgets/card_product/card_product.dart';
 
 class FeedPage extends StatefulWidget {
-  const FeedPage({Key? key}) : super(key: key);
+  final UserModel user;
+  const FeedPage({Key? key, required this.user}) : super(key: key);
 
   @override
   State<FeedPage> createState() => _FeedPageState();
@@ -22,6 +24,7 @@ class _FeedPageState extends State<FeedPage> {
   void initState() {
     super.initState();
     controller = FeedController(
+        user: widget.user,
         repository: FeedRepositoryImpl(database: AppDataBase.instance));
     controller.getData();
   }

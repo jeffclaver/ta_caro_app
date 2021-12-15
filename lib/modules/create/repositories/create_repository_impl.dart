@@ -8,15 +8,18 @@ class CreateRepositoryImpl implements CreateRepository {
   });
 
   @override
-  Future<bool> create(
-      {required String name,
-      required String price,
-      required String date}) async {
+  Future<bool> create({
+    required String name,
+    required String price,
+    required String date,
+    required String userID,
+  }) async {
     final priceSanitize = double.parse(price.replaceAll("R\$", ""));
     final response = await database.create(table: "orders", data: {
       "name": name,
       "price": priceSanitize,
       "created": date,
+      "userID": userID
     });
     return response;
   }

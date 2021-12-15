@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tacaroapp/shared/models/order_model.dart';
 import 'package:tacaroapp/shared/models/produt_model.dart';
+import 'package:tacaroapp/shared/models/user_model.dart';
 import '/modules/feed/repositories/feed_repository.dart';
 import '/shared/utils/app_state.dart';
 
 class FeedController extends ChangeNotifier {
   final FeedRepository repository;
+  final UserModel user;
   AppState state = AppState.empty();
 
-  FeedController({required this.repository});
+  FeedController({required this.user, required this.repository});
 
   void update(AppState state) {
     this.state = state;
@@ -64,7 +66,7 @@ class FeedController extends ChangeNotifier {
   Future<void> getData() async {
     try {
       update(AppState.loading());
-      final response = await repository.getAll();
+      final response = await repository.getProduct(user);
       update(AppState.success<List<OrderModel>>(response));
     } catch (e) {
       update(AppState.error(e.toString()));

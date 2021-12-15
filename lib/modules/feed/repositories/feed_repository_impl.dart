@@ -1,5 +1,6 @@
 import 'package:tacaroapp/modules/feed/repositories/feed_repository.dart';
 import 'package:tacaroapp/shared/models/order_model.dart';
+import 'package:tacaroapp/shared/models/user_model.dart';
 import 'package:tacaroapp/shared/services/app_database.dart';
 
 class FeedRepositoryImpl implements FeedRepository {
@@ -9,6 +10,12 @@ class FeedRepositoryImpl implements FeedRepository {
   @override
   Future<List<OrderModel>> getAll() async {
     final response = await database.getAll("orders");
+    return response.map((e) => OrderModel.fromMap(e)).toList();
+  }
+
+  @override
+  Future<List<OrderModel>> getProduct(UserModel user) async {
+    final response = await database.getProduct("orders", user);
     return response.map((e) => OrderModel.fromMap(e)).toList();
   }
 }

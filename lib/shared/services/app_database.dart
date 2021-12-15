@@ -13,6 +13,7 @@ abstract class AppDataBase {
     required String password,
   });
   Future<List<Map<String, dynamic>>> getAll(String table);
+  Future<List<Map<String, dynamic>>> getProduct(String table, UserModel user);
   Future<bool> create(
       {required String table, required Map<String, dynamic> data});
 }

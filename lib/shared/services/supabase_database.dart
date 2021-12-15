@@ -89,4 +89,20 @@ class SupabaseDatabase implements AppDataBase {
         .map((e) => e as Map<String, dynamic>)
         .toList();
   }
+
+  @override
+  Future<List<Map<String, dynamic>>> getProduct(
+      String table, UserModel user) async {
+    final response = await client
+        .from(table)
+        .select()
+        .filter('userID', 'eq', user.id)
+        .execute();
+    if (response.error != null) {
+      throw Exception(response.error!.message);
+    }
+    return (response.data as List<dynamic>)
+        .map((e) => e as Map<String, dynamic>)
+        .toList();
+  }
 }

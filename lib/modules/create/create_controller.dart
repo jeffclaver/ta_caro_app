@@ -9,7 +9,8 @@ class CreateController extends ChangeNotifier {
   String _name = "";
   String _price = "";
   String _date = "";
-  CreateController({required this.repository});
+  final String userID;
+  CreateController({required this.userID, required this.repository});
 
   void onChanged({String? name, String? price, String? date}) {
     _name = name ?? _name;
@@ -35,8 +36,8 @@ class CreateController extends ChangeNotifier {
     if (validate()) {
       try {
         update(AppState.loading());
-        final response =
-            await repository.create(name: _name, price: _price, date: _date);
+        final response = await repository.create(
+            name: _name, price: _price, date: _date, userID: userID);
         if (response) {
           update(AppState.success<bool>(response));
         } else {
